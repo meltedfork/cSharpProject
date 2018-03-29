@@ -23,6 +23,7 @@ namespace SpotifyClone.Controllers
         [Route("GetArtist/{search}")]
         public IActionResult GetArtist(string search)
         {
+            
             object ArtistInfo = new JObject();
             WebRequest.GetArtist(search, ApiResponse =>
                 {
@@ -34,14 +35,26 @@ namespace SpotifyClone.Controllers
             ).Wait();
             // System.Console.WriteLine("=============ArtistInfo 2===", ArtistInfo);
             
-            return View("Search");
+            return View("ArtistResult");
         }
 
+
         [HttpGet]
-        [Route("Search")]
-        public IActionResult Search()
+        [Route("GetAlbum/{search}")]
+        public IActionResult GetAlbum(string search)
         {
-            return View("Search");
+            
+            object AlbumInfo = new JObject();
+            WebRequest.GetAlbum(search, ApiResponse =>
+                {
+                    AlbumInfo = ApiResponse;
+                    System.Console.WriteLine("=============AlbumInfo 1===", AlbumInfo);
+                    ViewBag.Results = AlbumInfo;
+                    
+                }
+            ).Wait();
+        
+            return View("AlbumResult");
         }
     }
 }

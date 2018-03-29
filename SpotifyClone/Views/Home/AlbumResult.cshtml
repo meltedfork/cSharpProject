@@ -1,0 +1,17 @@
+
+Results:
+
+  <div class="container">
+      <div class="row">
+          @foreach(var album in ViewBag.Results.results.albummatches.album)
+          {
+          <div class="col-xs-3">
+              <a href="/showAlbum/@album.mbid" class="thumbnail">
+                  <img src="@album.image[1]["#text"]" />   
+              </a>
+              <h6>@album.name</h6>
+              <h6>@album.artist</h6>
+          </div>
+          }
+      </div>
+  </div>

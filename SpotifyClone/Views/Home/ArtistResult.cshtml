@@ -1,0 +1,18 @@
+
+Results:
+
+  <div class="container">
+      <div class="row">
+          @foreach(var artist in ViewBag.Results.results.artistmatches.artist)
+          {
+          <div class="col-xs-3">
+              <a href="#" class="thumbnail">
+                  <img src="@artist.image[1]["#text"]" />   
+              </a>
+              <h6>@artist.name</h6>
+          </div>
+          }
+      </div>
+  </div>
+
+
